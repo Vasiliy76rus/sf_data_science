@@ -6,7 +6,7 @@ import numpy as np
 
 
 def random_predict(number: int = 1) -> int:
-    """Угадываем число, адаптируя диапазон поиска
+    """Адаптивное угадывание числа
 
     Args:
         number (int, optional): Загаданное число. Defaults to 1.
@@ -17,15 +17,16 @@ def random_predict(number: int = 1) -> int:
     count = 0
     low = 1
     high = 100
-    predict_number = np.random.randint(low, high + 1)
 
-    while predict_number != number:
+    while True:
         count += 1
-        if predict_number < number:
-            low = predict_number + 1
+        predict_number = np.random.randint(low, high + 1)  # Предполагаемое число
+        if predict_number == number:
+            break  # выход из цикла, если угадали
+        elif predict_number < number:
+            low = predict_number + 1  # Смещение нижней границы поиска
         else:
-            high = predict_number - 1
-        predict_number = np.random.randint(low, high + 1)
+            high = predict_number - 1  # Смещение верхней границы поиска
 
     return count
 
@@ -52,5 +53,4 @@ def score_game(predict_function) -> int:
 
 
 if __name__ == "__main__":
-    # RUN
     score_game(random_predict)
