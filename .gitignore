@@ -1,0 +1,36 @@
+# System
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Project specific
+catboost_info/
+*.pkl
+!reports/best_model.pkl
+
+# Data
+# Ignore extracted JSONs as they are large and redundant (we have zips)
+data/raw/*.json
+
+# Ignore processed data if it can be regenerated
+data/processed/*
+!data/processed/.gitkeep
+
+# Explicitly track raw archives and CSVs
+!data/raw/*.zip
+!data/raw/*.csv
