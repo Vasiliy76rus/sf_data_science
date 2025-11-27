@@ -1,0 +1,44 @@
+# Большие файлы данных
+data/raw/*.json
+data/raw/*.zip
+data/raw/*.csv
+data/processed/*.parquet
+data/processed/*.csv
+
+# CatBoost временные файлы
+catboost_info/
+**/catboost_info/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Виртуальное окружение
+venv/
+env/
+ENV/
+.venv
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Модели (исключаем, так как они могут быть большими, но best_model.pkl в reports оставим если он небольшой, или исключим все pkl)
+*.pkl
+*.joblib
+
+# Исключения для важных файлов (если нужно сохранить конкретную модель)
+!reports/best_model.pkl
