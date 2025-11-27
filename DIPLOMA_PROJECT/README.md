@@ -1,79 +1,105 @@
-# 🎓 Дипломный проект: Прогнозирование получения государственного финансирования НКО
+# 🔮 NGO Funding Predictor
+> *Data Science Diploma Project by V.A. Kokorin*
 
-**Автор:** Кокорин В.А.  
-**Курс:** SkillFactory Data Science (DST-189)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?style=for-the-badge&logo=python)](https://www.python.org/)
+[![SkillFactory](https://img.shields.io/badge/SkillFactory-Data_Science-green?style=for-the-badge)](https://skillfactory.ru/)
+[![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)]()
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)]()
 
 ---
 
-## 📋 Описание проекта
+## 🧠 About The Project
 
-Исследование некоммерческого сектора (НКО) России с целью выявления факторов, влияющих на получение государственного финансирования (гранты, субсидии, госконтракты), и построения ML-модели для прогнозирования.
+**Can we predict which Non-Profit Organizations (NGOs) will receive state funding?**
 
-## 🎯 Цели и задачи
+This project analyzes the Russian NGO sector to identify key success factors for obtaining grants and government contracts. Using machine learning, we uncover patterns hidden in regional data, organization age, and activity types.
 
-1. **Анализ данных:** Исследовать распределение НКО по регионам, возрасту и видам деятельности
-2. **Проверка гипотез:**
-   - Зависит ли финансирование от региона?
-   - Влияет ли возраст организации на успех?
-   - Есть ли зависимость от вида деятельности (ОКВЭД)?
-3. **ML-моделирование:** Построить модель бинарной классификации
-4. **Интерпретация:** Определить ключевые факторы успеха
+**Key Objectives:**
+*   🕵️ **Detect** hidden dependencies in NGO funding.
+*   🧪 **Test** statistical hypotheses (Region, Age, Activity).
+*   🤖 **Build** a predictive ML model (ROC-AUC > 0.75).
+*   💡 **Interpret** results for strategic decision-making.
 
-## 📊 Данные
+---
 
-**Источник:** Данные получены из открытых источников (реестры НКО).
-В репозитории данные хранятся в папке `data/raw/` в виде разделенных архивов (`ngo_dump_*.zip`) для удобства скачивания и обхода ограничений GitHub на размер файлов.
+## 🛠️ Tech Stack
 
-## 📈 Результаты
+The project is built with a focus on **efficiency** and **minimalism**.
 
-- ✅ Все три гипотезы подтверждены статистически (p < 0.05)
-- ✅ Лучшая модель: ROC-AUC > 0.75
-- ✅ Ключевые факторы: возраст, регион, цифровой след (сайт, соцсети)
+| Category | Tools |
+|----------|-------|
+| **Core** | `Pandas` `NumPy` `Pathlib` |
+| **Viz** | `Matplotlib` `Seaborn` |
+| **Stats** | `SciPy` (Chi-square, Mann-Whitney) |
+| **ML** | `Scikit-learn` `CatBoost` `Imbalanced-learn` |
+| **XAI** | `SHAP` (Model Interpretability) |
 
-## 📁 Структура проекта
+---
 
-Проект организован максимально лаконично для удобства проверки и работы:
+## 📂 Project Structure
 
+We follow a **"Maximum Minimalism"** philosophy. No clutter, just code.
+
+```text
+📦 DIPLOMA_PROJECT
+ ┣ 📂 data
+ ┃ ┗ 📂 raw                 # 💾 Split-archives (GitHub friendly <100MB)
+ ┣ 📂 notebooks
+ ┃ ┗ 📜 DIPLOMA_PROJECT...  # 📓 The Core: Analysis + Report + Code
+ ┣ 📂 reports
+ ┃ ┣ 📂 figures             # 📊 Generated Charts
+ ┃ ┗ 🧠 best_model.pkl      # 🤖 Saved Model
+ ┣ 📜 requirements.txt      # 📦 Dependencies
+ ┗ 📜 README.md             # 📖 You are here
 ```
-DIPLOMA_PROJECT/
-├── notebooks/
-│   └── DIPLOMA_PROJECT_KOKORIN_VA.ipynb  # Единый центр исследования (код + отчет)
-├── data/
-│   └── raw/              # Исходные данные (скачать с openngo.ru)
-├── reports/
-│   ├── figures/          # Графики для презентации
-│   ├── best_model.pkl    # Сохраненная модель
-│   └── brief_nko_gos_dengi.pdf  # Бриф заказчика
-├── requirements.txt
-└── README.md
+
+---
+
+## 💡 Key Insights
+
+<details>
+<summary><b>Click to reveal findings</b></summary>
+
+### 1. Geography Matters 🌍
+Statistical tests confirmed that the **Region of Registration** significantly impacts funding probability. Some regions are "grant-magnets".
+
+### 2. Experience Pays Off ⏳
+Older organizations are more likely to receive funding. The "Survival of the fittest" rule applies here.
+
+### 3. Digital Footprint 🌐
+Organizations with a website and active social media presence have a drastically higher chance of success.
+
+</details>
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone & Install
+```bash
+git clone https://github.com/NeuroLoft/SF_DATA_SCIENCE.git
+cd SF_DATA_SCIENCE/DIPLOMA_PROJECT
+pip install -r requirements.txt
 ```
 
-## 🚀 Установка и запуск
+### 2. Data Setup
+The data is already included! 🎁
+We used a **split-zip strategy** to bypass GitHub limits. The notebook automatically stitches `ngo_dump_*.zip` files together.
+*Just run the code, no manual download needed.*
 
-1. **Установите зависимости:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 3. Run Analysis
+Open the main notebook:
+```bash
+jupyter notebook notebooks/DIPLOMA_PROJECT_KOKORIN_VA.ipynb
+```
 
-2. **Скачайте данные:**
-   - Перейдите на [openngo.ru](https://openngo.ru/)
-   - Скачайте дамп базы данных
-   - Поместите архив в `data/raw/`
+---
 
-3. **Запустите ноутбук:**
-   ```bash
-   jupyter notebook notebooks/DIPLOMA_PROJECT_KOKORIN_VA.ipynb
-   ```
+## 👨‍💻 Author
 
-## 🛠 Используемые технологии
+**Vladimir Kokorin**
+*Data Scientist in training*
 
-- **Обработка данных:** pandas, numpy (включая очистку выбросов)
-- **Визуализация:** matplotlib, seaborn
-- **Статистика:** scipy (χ²-тест, Mann-Whitney U)
-- **ML:** scikit-learn (Pipeline, RobustScaler), CatBoost
-- **Интерпретация:** SHAP
+> *"Minimalism is not a lack of something, but a perfect amount of something."*
 
-## 📜 Лицензия
-
-Проект выполнен в рамках курса «Специализация Data Science» (SkillFactory).
-*Девиз: Максимальный минимализм, красота и эффективность.*
+---
