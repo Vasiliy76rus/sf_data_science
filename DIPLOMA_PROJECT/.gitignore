@@ -1,44 +1,36 @@
-# Большие файлы данных
-data/raw/*.json
-data/raw/*.zip
-data/raw/*.csv
-data/processed/*.parquet
-data/processed/*.csv
+# System
+.DS_Store
+Thumbs.db
 
-# CatBoost временные файлы
-catboost_info/
-**/catboost_info/
-
-# Jupyter checkpoints
-.ipynb_checkpoints/
-*/.ipynb_checkpoints/
-
-# Python cache
+# Python
 __pycache__/
 *.py[cod]
-*$py.class
 *.so
-
-# Виртуальное окружение
+.venv
 venv/
 env/
-ENV/
-.venv
-.env
 
 # IDE
 .idea/
 .vscode/
 *.swp
-*.swo
 
-# OS
-.DS_Store
-Thumbs.db
+# Jupyter
+.ipynb_checkpoints/
 
-# Модели (исключаем, так как они могут быть большими, но best_model.pkl в reports оставим если он небольшой, или исключим все pkl)
+# Project specific
+catboost_info/
 *.pkl
-*.joblib
-
-# Исключения для важных файлов (если нужно сохранить конкретную модель)
 !reports/best_model.pkl
+
+# Data
+# Ignore extracted JSONs as they are large and redundant (we have zips)
+data/raw/*.json
+
+# Ignore processed data if it can be regenerated
+data/processed/*
+!data/processed/.gitkeep
+
+# Explicitly track raw archives and CSVs
+!data/raw/*.zip
+!data/raw/*.csv
